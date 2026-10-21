@@ -53,6 +53,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-3">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{ __("Orders") }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    5
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{ __("Privileged Members") }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    5
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

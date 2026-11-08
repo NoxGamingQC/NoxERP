@@ -41,4 +41,23 @@ class User extends Authenticatable
         return Company::where('id', $this->company_id)->value('name') ?: null;
     }
 
+    public function getDisplayName(): string
+    {
+        return isset($this->name) && !empty(trim($this->name))  ? explode(' ', $this->name)[0] . ' ' . ((count(explode(' ', $this->name)) > 1) ? explode(' ', $this->name)[1][0] . '.' : '') : 'User';
+    }
+
+    public function getFirstname(): string
+    {
+        return isset($this->name) && !empty(trim($this->name))  ? explode(' ', $this->name)[0] : 'User';
+    }
+
+    public function getLastname(): string
+    {
+        return isset($this->name) && !empty(trim($this->name))  ? ((count(explode(' ', $this->name)) > 1) ? explode(' ', $this->name)[1] : '') : '';
+    }
+
+    public function getFullname(): string
+    {
+        return isset($this->name) && !empty(trim($this->name))  ? $this->name : 'User';
+    }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Company;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,16 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function editCompanyProfile(Request $request): View
+    {
+        if(!$request->user()->is_management) {
+            abort(403, 'Unauthorized action.');
+        }
+        $company = Company::where('id', $request->user()->company_id)->first();
+        return view('profile.edit_company_profile', [
+            'company' => $company,
+        ]);
     }
 }

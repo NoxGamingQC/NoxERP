@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,4 +30,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getCompanyLogo(): string
+    {
+        return Company::where('id', $this->company_id)->value('logo') ?: null;
+    }
+
+    public function getCompanyName(): string
+    {
+        return Company::where('id', $this->company_id)->value('name');
+    }
+
 }

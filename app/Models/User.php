@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function getCompanyName(): string
     {
-        return Company::where('id', $this->company_id)->value('name');
+        return Company::where('id', $this->company_id)->value('name') ?: null;
     }
 
 }
